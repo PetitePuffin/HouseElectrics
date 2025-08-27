@@ -1,0 +1,149 @@
+/* Import modern Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background: #f7f9fb;
+    color: #222;
+    scroll-behavior: smooth;
+}
+
+h1, h2 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    color: #222;
+}
+
+.section {
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    padding: 32px 24px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.service-card h3 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #0077ff;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: #444;
+}
+
+.contact-section {
+    background: linear-gradient(90deg, #0077ff 0%, #00c6ff 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 48px 24px;
+    box-shadow: 0 4px 16px rgba(0, 119, 255, 0.08);
+    margin-top: 40px;
+}
+
+.contact-section h2 {
+    color: #fff;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-section input,
+.contact-section textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.contact-section button {
+    background: #fff;
+    color: #0077ff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.contact-section button:hover {
+    background: #0077ff;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .section {
+        padding: 40px 0;
+        width: 98%;
+    }
+    .services-grid {
+        gap: 20px;
+    }
+    .contact-section {
+        padding: 32px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+    .section {
+        padding: 24px 0;
+    }
+    .service-card {
+        padding: 20px 12px;
+    }
+    .contact-section {
+        padding: 20px 8px;
+    }
+}
+
+/* Smooth scroll animations using AOS (Animate On Scroll) */
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: 0.8s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
