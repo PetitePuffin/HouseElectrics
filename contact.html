@@ -150,11 +150,11 @@
               <input type="text" id="name" name="name" required placeholder="Enter your full name">
             </div>
             <div class="form-group">
-              <label for="phone">Phone Number *</label>
-              <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+              <label for="phone" >Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="Enter your phone number">
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
+              <label for="email" >Email Address</label>
               <input type="email" id="email" name="email" placeholder="Enter your email address">
             </div>
             <div class="form-group">
@@ -173,7 +173,7 @@
               <input type="text" id="location" name="location" placeholder="Enter your location (Delhi/NCR)">
             </div>
             <div class="form-group">
-              <label for="message">Message *</label>
+              <label for="message" name="message">Message *</label>
               <textarea id="message" name="message" rows="4" required placeholder="Describe your electrical issue or requirement"></textarea>
             </div>
             <div class="form-group">
