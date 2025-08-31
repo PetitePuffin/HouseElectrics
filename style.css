@@ -242,6 +242,7 @@ p {
     color: var(--accent);
     text-shadow: 0 1px 4px rgba(0,0,0,0.18);
 }
+
 .feature {
     display: flex;
     align-items: center;
