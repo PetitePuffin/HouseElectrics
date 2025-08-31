@@ -218,6 +218,30 @@ p {
     margin-bottom: 2.5rem;
 }
 
+/* Make hero section text more readable on gradient background */
+.hero-title,
+.hero-subtitle,
+.hero-features,
+.hero-features .feature,
+.hero-features .feature i {
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Optionally, increase contrast for subtitle and features */
+.hero-subtitle {
+    color: #f3f4f6;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.hero-features .feature {
+    color: #f3f4f6;
+}
+
+.hero-features .feature i {
+    color: var(--accent);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
 .feature {
     display: flex;
     align-items: center;
