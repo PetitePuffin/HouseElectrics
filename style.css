@@ -88,11 +88,49 @@ p {
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    /* Subtle background to make transparent logo stand out */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.logo:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
 }
 
 .logo-img {
     height: 48px;
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)) 
+            drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+    /* Ensure logo is visible on all backgrounds */
+    mix-blend-mode: multiply;
+}
+
+.logo:hover .logo-img {
+    filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3))
+            drop-shadow(0 2px 4px rgba(37, 99, 235, 0.2));
+    transform: scale(1.02);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: var(--radius);
+    padding: 0.25rem;
+}
+
+.logo-link:hover {
+    transform: scale(1.02);
+    background: rgba(37, 99, 235, 0.05);
 }
 
 .logo-text h1 {
@@ -417,7 +455,25 @@ p {
 }
 
 .services-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
     text-align: center;
+}
+
+.services-cta h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.services-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Why Choose Us */
@@ -557,6 +613,11 @@ p {
 .footer-logo-img {
     height: 40px;
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))
+            drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+    transition: all 0.3s ease;
+    /* Ensure logo is visible on dark footer background */
+    mix-blend-mode: screen;
 }
 
 .footer-logo h3 {
@@ -613,6 +674,11 @@ p {
 
 .emergency-services {
     padding: 80px 0;
+    background: var(--white);
+}
+
+.emergency-services .section-header {
+    margin-bottom: 3rem;
 }
 
 .emergency-grid {
@@ -625,16 +691,32 @@ p {
 .emergency-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 2rem;
+    padding: 2.5rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
     text-align: center;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.emergency-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--danger), #f87171);
 }
 
 .emergency-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.emergency-card:hover .emergency-icon {
+    transform: scale(1.1);
 }
 
 .emergency-icon {
@@ -646,6 +728,7 @@ p {
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .emergency-icon i {
@@ -703,11 +786,28 @@ p {
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
 }
 
 .pricing-card.featured {
     border: 2px solid var(--primary);
     transform: scale(1.05);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
 }
 
 .pricing-card h4 {
@@ -737,6 +837,10 @@ p {
 .amc-services {
     padding: 80px 0;
     background: var(--gray-50);
+}
+
+.amc-services .section-header {
+    margin-bottom: 3rem;
 }
 
 .amc-content {
@@ -772,13 +876,22 @@ p {
 }
 
 .plan-tab {
-    padding: 0.75rem 1.5rem;
-    border: 1px solid var(--gray-300);
+    padding: 1rem 2rem;
+    border: 2px solid var(--gray-300);
     background: var(--white);
     border-radius: var(--radius);
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1rem;
+    min-width: 140px;
+}
+
+.plan-tab:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .plan-tab.active,
@@ -801,16 +914,33 @@ p {
 .plan-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
     text-align: center;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
 }
 
 .plan-card.featured {
     border: 2px solid var(--primary);
     transform: scale(1.05);
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
 }
 
 .plan-card h4 {
@@ -860,6 +990,11 @@ p {
 /* AC Services */
 .ac-services {
     padding: 80px 0;
+    background: var(--white);
+}
+
+.ac-services .section-header {
+    margin-bottom: 3rem;
 }
 
 .ac-grid {
@@ -871,15 +1006,31 @@ p {
 .ac-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 2rem;
+    padding: 2.5rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ac-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--secondary), #34d399);
 }
 
 .ac-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.ac-card:hover .ac-icon {
+    transform: scale(1.1);
 }
 
 .ac-icon {
@@ -891,6 +1042,7 @@ p {
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .ac-icon i {
@@ -933,6 +1085,10 @@ p {
     background: var(--gray-50);
 }
 
+.itc-services .section-header {
+    margin-bottom: 3rem;
+}
+
 .itc-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -942,15 +1098,31 @@ p {
 .itc-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 2rem;
+    padding: 2.5rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.itc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--accent), #fbbf24);
 }
 
 .itc-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.itc-card:hover .itc-icon {
+    transform: scale(1.1);
 }
 
 .itc-icon {
@@ -962,6 +1134,7 @@ p {
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .itc-icon i {
@@ -1174,6 +1347,18 @@ p {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
 .contact-form {
@@ -1230,19 +1415,122 @@ p {
 .submit-btn {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: var(--white);
-    padding: 1rem 2rem;
+    padding: 1.25rem 2.5rem;
     border: none;
     border-radius: var(--radius);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
 }
 
 .submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-md);
+}
+
+.submit-btn:disabled {
+    background: var(--gray-400);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.submit-btn:disabled:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.submit-btn .fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Form validation styles */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group.error label {
+    color: var(--danger);
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+/* Form WhatsApp Section */
+.form-whatsapp {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-200);
+}
+
+.form-whatsapp p {
+    margin-bottom: 1rem;
+    color: var(--gray-600);
+    font-size: 0.875rem;
+}
+
+.whatsapp-direct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25d366;
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.whatsapp-direct-btn:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: var(--white);
 }
 
 /* Emergency CTA */
@@ -1311,6 +1599,29 @@ p {
 .emergency-call-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
+}
+
+.emergency-whatsapp-btn {
+    background: #25d366;
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    font-size: 1.125rem;
+    margin-top: 1rem;
+}
+
+.emergency-whatsapp-btn:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    color: var(--white);
 }
 
 .response-time {
@@ -1392,6 +1703,12 @@ p {
     .plan-content.active {
         grid-template-columns: 1fr;
     }
+    
+    .emergency-grid,
+    .ac-grid,
+    .itc-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
@@ -1406,6 +1723,10 @@ p {
     }
     
     .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .services-hero h1 {
         font-size: 2.5rem;
     }
     
@@ -1445,6 +1766,36 @@ p {
     .emergency-actions {
         align-items: center;
     }
+    
+    .plan-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .plan-tab {
+        min-width: 200px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    /* Mobile logo adjustments */
+    .logo {
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1478,6 +1829,23 @@ p {
         padding: 0.875rem 1.5rem;
         font-size: 0.875rem;
     }
+    
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .whatsapp-link {
+        padding: 0.75rem 1rem;
+    }
+    
+    .whatsapp-text {
+        display: none;
+    }
+    
+    .whatsapp-link i {
+        font-size: 1.75rem;
+    }
 }
 
 /* AOS Animations */
@@ -1505,4 +1873,96 @@ textarea:focus,
 a:focus {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
+}
+
+/* Logo Glow Effect for Dark Backgrounds */
+.logo-glow {
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.3))
+            drop-shadow(0 0 20px rgba(37, 99, 235, 0.2));
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #25d366;
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+    background: #128c7e;
+}
+
+.whatsapp-link i {
+    font-size: 1.5rem;
+}
+
+.whatsapp-text {
+    font-size: 0.875rem;
+}
+
+@keyframes whatsapp-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* WhatsApp Button Styles */
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25d366;
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.whatsapp-btn:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: var(--white);
+}
+
+.btn-whatsapp {
+    background: #25d366;
+    color: var(--white);
+    border: 2px solid #25d366;
+}
+
+.btn-whatsapp:hover {
+    background: #128c7e;
+    border-color: #128c7e;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }

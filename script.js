@@ -42,17 +42,62 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = formData.get('message');
             const urgent = formData.get('urgent');
             
-            // Simple validation
-            if (!name || !phone || !message) {
-                showNotification('Please fill in all required fields.', 'error');
+            // Clear previous error states
+            clearFormErrors();
+            
+            // Enhanced validation
+            let hasErrors = false;
+            
+            if (!name || name.trim().length < 2) {
+                showFieldError('name', 'Please enter your full name (minimum 2 characters)');
+                hasErrors = true;
+            }
+            
+            if (!phone || phone.trim().length < 10) {
+                showFieldError('phone', 'Please enter a valid phone number (minimum 10 digits)');
+                hasErrors = true;
+            }
+            
+            if (!message || message.trim().length < 10) {
+                showFieldError('message', 'Please enter a detailed message (minimum 10 characters)');
+                hasErrors = true;
+            }
+            
+            if (hasErrors) {
+                showNotification('Please fix the errors in the form.', 'error');
                 return;
             }
             
-            // Show success message
-            showNotification('Thank you! Your message has been sent. We will get back to you soon.', 'success');
+            // Disable submit button and show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             
-            // Reset form
-            this.reset();
+            // Simulate form submission (replace with actual form submission logic)
+            setTimeout(() => {
+                // Show success message
+                showNotification('Thank you! Your message has been sent. We will get back to you within 2 hours.', 'success');
+                
+                // Reset form
+                this.reset();
+                
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }, 1500);
+        });
+        
+        // Real-time validation
+        const formFields = contactForm.querySelectorAll('input, select, textarea');
+        formFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            field.addEventListener('input', function() {
+                clearFieldError(this);
+            });
         });
     }
 
@@ -191,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 20px;
         width: 50px;
         height: 50px;
-        background: var(--primary-color);
+        background: var(--primary);
         color: white;
         border: none;
         border-radius: 50%;
@@ -234,6 +279,86 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Form validation helper functions
+function showFieldError(fieldName, message) {
+    const field = document.getElementById(fieldName);
+    const formGroup = field.closest('.form-group');
+    
+    // Add error class
+    formGroup.classList.add('error');
+    
+    // Create or update error message
+    let errorElement = formGroup.querySelector('.error-message');
+    if (!errorElement) {
+        errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        formGroup.appendChild(errorElement);
+    }
+    errorElement.textContent = message;
+}
+
+function clearFieldError(field) {
+    const formGroup = field.closest('.form-group');
+    formGroup.classList.remove('error');
+    
+    const errorElement = formGroup.querySelector('.error-message');
+    if (errorElement) {
+        errorElement.remove();
+    }
+}
+
+function clearFormErrors() {
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.classList.remove('error');
+        const errorElement = group.querySelector('.error-message');
+        if (errorElement) {
+            errorElement.remove();
+        }
+    });
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    const fieldName = field.name;
+    
+    // Clear previous error
+    clearFieldError(field);
+    
+    // Validate based on field type
+    if (field.hasAttribute('required') && !value) {
+        showFieldError(fieldName, 'This field is required');
+        return false;
+    }
+    
+    if (fieldName === 'name' && value.length < 2) {
+        showFieldError(fieldName, 'Name must be at least 2 characters long');
+        return false;
+    }
+    
+    if (fieldName === 'phone' && value.length < 10) {
+        showFieldError(fieldName, 'Phone number must be at least 10 digits');
+        return false;
+    }
+    
+    if (fieldName === 'message' && value.length < 10) {
+        showFieldError(fieldName, 'Message must be at least 10 characters long');
+        return false;
+    }
+    
+    if (field.type === 'email' && value && !isValidEmail(value)) {
+        showFieldError(fieldName, 'Please enter a valid email address');
+        return false;
+    }
+    
+    return true;
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
 // Utility functions
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
@@ -245,9 +370,9 @@ function showNotification(message, type = 'info') {
         top: 20px;
         right: 20px;
         padding: 1rem 1.5rem;
-        background: ${type === 'success' ? 'var(--secondary-color)' : type === 'error' ? 'var(--danger-color)' : 'var(--primary-color)'};
+        background: ${type === 'success' ? 'var(--secondary)' : type === 'error' ? 'var(--danger)' : 'var(--primary)'};
         color: white;
-        border-radius: var(--border-radius);
+        border-radius: var(--radius);
         box-shadow: var(--shadow-lg);
         z-index: 10000;
         transform: translateX(100%);
@@ -311,15 +436,31 @@ style.textContent = `
     }
     
     .focused label {
-        color: var(--primary-color);
+        color: var(--primary);
         transform: translateY(-20px) scale(0.8);
     }
     
     .form-group.focused input,
     .form-group.focused select,
     .form-group.focused textarea {
-        border-color: var(--primary-color);
+        border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    /* Logo entrance animation */
+    @keyframes logoEntrance {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    .logo-img {
+        animation: logoEntrance 0.8s ease-out;
     }
 `;
 document.head.appendChild(style);
