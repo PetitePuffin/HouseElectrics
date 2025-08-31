@@ -29,74 +29,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Contact form handling
-    const contactForm = document.getElementById('contactForm');
+    var contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-            const service = formData.get('service');
-            const message = formData.get('message');
-            const urgent = formData.get('urgent');
-            
-            // Clear previous error states
-            clearFormErrors();
-            
-            // Enhanced validation
-            let hasErrors = false;
-            
-            if (!name || name.trim().length < 2) {
-                showFieldError('name', 'Please enter your full name (minimum 2 characters)');
-                hasErrors = true;
-            }
-            
-            if (!phone || phone.trim().length < 10) {
-                showFieldError('phone', 'Please enter a valid phone number (minimum 10 digits)');
-                hasErrors = true;
-            }
-            
-            if (!message || message.trim().length < 10) {
-                showFieldError('message', 'Please enter a detailed message (minimum 10 characters)');
-                hasErrors = true;
-            }
-            
-            if (hasErrors) {
-                showNotification('Please fix the errors in the form.', 'error');
-                return;
-            }
-            
-            // Disable submit button and show loading state
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            // Simulate form submission (replace with actual form submission logic)
-            setTimeout(() => {
-                // Show success message
-                showNotification('Thank you! Your message has been sent. We will get back to you within 2 hours.', 'success');
-                
-                // Reset form
-                this.reset();
-                
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            }, 1500);
-        });
-        
-        // Real-time validation
-        const formFields = contactForm.querySelectorAll('input, select, textarea');
-        formFields.forEach(field => {
-            field.addEventListener('blur', function() {
-                validateField(this);
-            });
-            
-            field.addEventListener('input', function() {
-                clearFieldError(this);
+            var form = e.target;
+            var data = new FormData(form);
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function(response) {
+                if (response.ok) {
+                    form.reset();
+                    // Show success message (add this div in your HTML if not present)
+                    var successDiv = document.getElementById('form-success');
+                    if (successDiv) {
+                        successDiv.style.display = 'block';
+                    } else {
+                        alert("Thank you! Your message has been sent.");
+                    }
+                } else {
+                    response.json().then(function(data) {
+                        alert(data.error || "Oops! There was a problem submitting your form");
+                    });
+                }
+            }).catch(function(error) {
+                alert("Oops! There was a problem submitting your form");
             });
         });
     }

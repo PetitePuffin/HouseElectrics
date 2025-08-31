@@ -145,18 +145,26 @@
         </div>
         <div class="form-wrapper" data-aos="fade-left">
           <form class="contact-form" id="contactForm" action="https://formspree.io/f/mkgvbvop" method="POST">
+
+            <!-- Full Name -->
             <div class="form-group">
               <label for="name">Full Name *</label>
               <input type="text" id="name" name="name" required placeholder="Enter your full name">
             </div>
+
+            <!-- Phone Number -->
             <div class="form-group">
-              <label for="phone" >Phone Number *</label>
-              <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="Enter your phone number">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number">
             </div>
+
+            <!-- Email Address -->
             <div class="form-group">
-              <label for="email" >Email Address</label>
+              <label for="email">Email Address</label>
               <input type="email" id="email" name="email" placeholder="Enter your email address">
             </div>
+
+            <!-- Service Required -->
             <div class="form-group">
               <label for="service">Service Required</label>
               <select id="service" name="service">
@@ -168,32 +176,46 @@
                 <option value="other">Other</option>
               </select>
             </div>
+
+            <!-- Location -->
             <div class="form-group">
               <label for="location">Location</label>
               <input type="text" id="location" name="location" placeholder="Enter your location (Delhi/NCR)">
             </div>
+
+            <!-- Message -->
             <div class="form-group">
-              <label for="message" name="message">Message *</label>
+              <label for="message">Message *</label>
               <textarea id="message" name="message" rows="4" required placeholder="Describe your electrical issue or requirement"></textarea>
             </div>
+
+            <!-- Urgent Checkbox -->
             <div class="form-group">
-              <label class="checkbox-label">
+              <label class="checkbox-label" for="urgent">
                 <input type="checkbox" name="urgent" id="urgent">
                 <span class="checkmark"></span>
                 This is an urgent electrical issue
               </label>
             </div>
+
+            <!-- Submit -->
             <button type="submit" class="submit-btn">
-              <i class="fas fa-paper-plane"></i>
-              Send Message
+              <i class="fas fa-paper-plane"></i> Send Message
             </button>
+
+            <!-- WhatsApp Direct Contact -->
             <div class="form-whatsapp">
               <p>Or contact us directly on WhatsApp:</p>
               <a href="https://wa.me/918766250927?text=Hi! I need electrical services. Can you help me?" target="_blank" class="whatsapp-direct-btn">
-                <i class="fab fa-whatsapp"></i>
-                Chat on WhatsApp
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
               </a>
             </div>
+
+            <!-- Success Message -->
+            <div id="form-success" style="display:none; color:green; margin-top:1rem;">
+              Thank you! Your message has been sent.
+            </div>
+
           </form>
         </div>
       </div>
