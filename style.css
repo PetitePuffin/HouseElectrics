@@ -455,7 +455,7 @@ p {
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -463,9 +463,21 @@ p {
     margin-bottom: 1.5rem;
 }
 
+/* Make service icons visible on white backgrounds */
 .service-icon i {
-    font-size: 1.5rem;
-    color: var(--white);
+    font-size: 2rem;
+    color: var(--primary-dark);
+    text-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.service-card:nth-child(2) .service-icon i {
+    color: var(--secondary);
+    text-shadow: 0 2px 8px rgba(16,185,129,0.10);
+}
+
+.service-card:nth-child(3) .service-icon i {
+    color: var(--danger);
+    text-shadow: 0 2px 8px rgba(239,68,68,0.10);
 }
 
 .service-card h3 {
@@ -480,6 +492,8 @@ p {
 
 .service-features {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .service-features li {
@@ -743,6 +757,25 @@ p {
     overflow: hidden;
 }
 
+/* Emergency Service Icon Colors */
+.emergency-card:nth-child(1) .emergency-icon i {
+    color: var(--primary-dark); /* Power Restoration: blue */
+}
+
+.emergency-card:nth-child(2) .emergency-icon i {
+    color: var(--secondary); /* Switch & Socket Repair: green */
+}
+
+.emergency-card:nth-child(3) .emergency-icon i {
+    color: var(--danger); /* Short Circuit Repair: red */
+}
+
+/* Optional: Add a subtle shadow for better visibility */
+.emergency-icon i {
+    font-size: 2.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
 .emergency-card::before {
     content: '';
     position: absolute;
@@ -775,7 +808,7 @@ p {
 }
 
 .emergency-icon i {
-    font-size: 2rem;
+    font-size: 3rem;
     color: var(--white);
 }
 
