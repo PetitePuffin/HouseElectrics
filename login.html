@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book AMC Service - House Electrics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="logo.png" alt="House Electric Logo" class="logo-img">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="amc.html" class="nav-link">AMC Services</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+                <div class="header-cta">
+                    <a href="tel:+919773644275" class="cta-button">
+                        <i class="fas fa-phone"></i>
+                        Emergency Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trust Seals Bar -->
+    <div class="trust-seals">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Govt. Licensed</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-users"></i>
+                    <span>10,000+ Customers</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-clock"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Booking Form Section -->
+    <section class="login-section">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-header">
+                    <h1>Book Your AMC Service</h1>
+                    <p>Complete your booking for professional electrical maintenance services</p>
+                </div>
+
+                <div class="service-summary">
+                    <div class="selected-service">
+                        <h3>Selected Service</h3>
+                        <div class="service-details">
+                            <div class="service-name" id="serviceName">Loading...</div>
+                            <div class="service-price" id="servicePrice">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-form-container">
+                    <form class="booking-form" id="bookingForm" action="https://formspree.io/f/mkgvbvop" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="alternatePhone">Alternate Phone</label>
+                                <input type="tel" id="alternatePhone" name="alternatePhone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Complete Address *</label>
+                            <textarea id="address" name="address" rows="3" required placeholder="House/Flat No., Building Name, Street, Area, City, Pincode"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="propertyType">Property Type *</label>
+                                <select id="propertyType" name="propertyType" required>
+                                    <option value="">Select Property Type</option>
+                                    <option value="residential">Residential</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="industrial">Industrial</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="propertySize">Property Size</label>
+                                <input type="text" id="propertySize" name="propertySize" placeholder="e.g., 2 BHK, 1000 sq ft">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Start Date</label>
+                            <input type="date" id="preferredDate" name="preferredDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specialRequirements">Special Requirements / Notes</label>
+                            <textarea id="specialRequirements" name="specialRequirements" rows="3" placeholder="Any specific requirements or additional information"></textarea>
+                        </div>
+
+                        <!-- Hidden fields for service details -->
+                        <input type="hidden" id="selectedService" name="selectedService" value="">
+                        <input type="hidden" id="selectedPrice" name="selectedPrice" value="">
+                        <input type="hidden" name="_subject" value="New AMC Booking Request">
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                I agree to the <a href="#" target="_blank">Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                Send me updates about services and offers via email/SMS
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Booking Request
+                        </button>
+                    </form>
+
+                    <div class="booking-info">
+                        <div class="info-card">
+                            <h4><i class="fas fa-info-circle"></i> What Happens Next?</h4>
+                            <ul>
+                                <li>You'll receive a confirmation email within 5 minutes</li>
+                                <li>Our team will call you within 2 hours to confirm details</li>
+                                <li>We'll schedule your first service visit</li>
+                                <li>You'll get SMS updates about your service</li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-card">
+                            <h4><i class="fas fa-phone"></i> Need Help?</h4>
+                            <p>Call us directly for immediate assistance</p>
+                            <div class="contact-buttons">
+                                <a href="tel:+919773644275" class="contact-btn">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                                <a href="https://wa.me/918766250927?text=Hi! I need help with AMC booking" target="_blank" class="contact-btn whatsapp">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="House Electric Logo" class="footer-logo-img">
+                    </div>
+                    <p>Powering Trust, Delivering Safety. Your trusted partner for all electrical needs across Delhi NCR.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="amc.html">AMC Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91 9773644275</li>
+                        <li><i class="fas fa-phone-alt"></i> Emergency: +91 8766250927</li>
+                        <li><i class="fas fa-envelope"></i> office.houseelectric@gmail.com</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: +91 8766250927</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Emergency Service</h4>
+                    <p>24/7 Emergency Electrical Repair Services</p>
+                    <a href="tel:+919773644275" class="emergency-btn">
+                        <i class="fas fa-phone"></i>
+                        Emergency Call
+                    </a>
+                    <a href="https://wa.me/918766250927?text=Emergency! I need immediate electrical help!" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp Emergency
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 House Electric. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Populate service details from URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceName = getUrlParameter('service');
+            const servicePrice = getUrlParameter('price');
+            
+            document.getElementById('serviceName').textContent = serviceName || 'AMC Service';
+            
+            if (servicePrice === 'custom') {
+                document.getElementById('servicePrice').textContent = 'Custom Quote Required';
+            } else if (servicePrice === '0') {
+                document.getElementById('servicePrice').textContent = 'Free Service';
+            } else {
+                document.getElementById('servicePrice').textContent = servicePrice ? `₹${servicePrice}/year` : 'Price on Request';
+            }
+            
+            // Set hidden form fields
+            document.getElementById('selectedService').value = serviceName || 'AMC Service';
+            document.getElementById('selectedPrice').value = servicePrice || 'Not specified';
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Let the form submit naturally to Formspree
+            // Show success message after a brief delay
+            setTimeout(() => {
+                alert('Booking request submitted successfully! You will receive a confirmation email shortly. Our team will contact you within 2 hours.');
+            }, 1000);
+        });
+
+        // Set minimum date to today
+        document.getElementById('preferredDate').min = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
