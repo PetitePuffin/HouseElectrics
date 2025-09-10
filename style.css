@@ -261,6 +261,37 @@ p {
     flex-wrap: wrap;
 }
 
+.hero .btn {
+    text-shadow: none;
+    font-weight: 600;
+}
+
+.hero .btn-primary {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--white);
+    box-shadow: var(--shadow-lg);
+}
+
+.hero .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    background: var(--gray-50);
+}
+
+.hero .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero .btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary);
+    text-shadow: none;
+}
+
 .btn {
     padding: 1rem 2rem;
     border-radius: var(--radius);
@@ -279,22 +310,29 @@ p {
     background: var(--white);
     color: var(--primary);
     box-shadow: var(--shadow-lg);
+    text-shadow: none;
+    font-weight: 600;
+    border: 2px solid var(--white);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
+    background: var(--gray-50);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--white);
     border: 2px solid var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
 }
 
 .btn-secondary:hover {
     background: var(--white);
     color: var(--primary);
+    text-shadow: none;
 }
 
 .hero-image {
@@ -543,6 +581,24 @@ p {
     text-align: center;
 }
 
+.services-cta .btn {
+    text-shadow: none;
+    font-weight: 600;
+}
+
+.services-cta .btn-primary {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--white);
+    box-shadow: var(--shadow-lg);
+}
+
+.services-cta .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    background: var(--gray-50);
+}
+
 .services-cta h2 {
     color: var(--white);
     margin-bottom: 1rem;
@@ -622,12 +678,16 @@ p {
 .contact-cta h2 {
     color: var(--white);
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
 }
 
 .contact-cta p {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--white);
     margin-bottom: 2rem;
     font-size: 1.125rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
 }
 
 .cta-buttons {
@@ -635,6 +695,24 @@ p {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.contact-cta .btn {
+    text-shadow: none;
+    font-weight: 600;
+}
+
+.contact-cta .btn-primary {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--white);
+}
+
+.contact-cta .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Footer */
@@ -745,13 +823,17 @@ p {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
 }
 
 .services-hero p {
     font-size: 1.25rem;
-    opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+    color: var(--white);
 }
 
 .emergency-services {
@@ -1557,6 +1639,209 @@ p {
     box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
+/* Know More Button Styles */
+.know-more-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.know-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(49, 130, 206, 0.2);
+}
+
+.know-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
+    background: linear-gradient(135deg, #2c5282 0%, #2a4365 100%);
+}
+
+/* AMC Features Page Styles */
+.features-hero {
+    background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.features-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.features-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.detailed-features {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.feature-detail {
+    display: flex;
+    gap: 30px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-left: 5px solid #3182ce;
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.feature-content h3 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.feature-summary {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.feature-breakdown h4 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-breakdown ul {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-breakdown li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.feature-breakdown li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #38a169;
+    font-weight: bold;
+}
+
+.features-cta {
+    text-align: center;
+    background: white;
+    padding: 60px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.features-cta h2 {
+    color: #2d3748;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.features-cta p {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #3182ce;
+    border: 2px solid #3182ce;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
+}
+
+.btn-secondary:hover {
+    background: #3182ce;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
+}
+
 /* AMC CTA Section in Services Page */
 .amc-cta-section {
     background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
@@ -1591,13 +1876,17 @@ p {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
 }
 
 .contact-hero p {
     font-size: 1.25rem;
-    opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+    color: var(--white);
 }
 
 .contact-info {
