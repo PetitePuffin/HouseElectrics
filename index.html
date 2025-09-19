@@ -119,8 +119,16 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Slideshow -->
   <section class="hero">
+    <div class="slideshow">
+      <div class="slide active" style="background-image: url('./assets/image01.png');"></div>
+      <div class="slide" style="background-image: url('./assets/image02.png');"></div>
+      <div class="slide" style="background-image: url('./assets/image03.png');"></div>
+      <div class="slide" style="background-image: url('./assets/image04.png');"></div>
+      <div class="slide" style="background-image: url('./assets/image05.png');"></div>
+      <div class="overlay"></div>
+    </div>
     <div class="container">
       <div class="hero-content" data-aos="fade-up">
         <h1 class="hero-title">Professional Electrical Services</h1>
@@ -140,17 +148,19 @@
           </div>
         </div>
         <div class="hero-buttons">
-          <a href="services.html" class="btn btn-primary">Our Services</a>
-          <a href="contact.html" class="btn btn-secondary">Get Quote</a>
+          <a href="services.html" class="btn btn-primary">
+            <i class="fas fa-tools"></i> Our Services
+          </a>
+          <a href="contact.html" class="btn btn-secondary">
+            <i class="fas fa-file-alt"></i> Get Quote
+          </a>
           <a href="https://wa.me/918766250927?text=Hi! I need electrical services. Can you help me?" target="_blank" class="btn btn-whatsapp">
             <i class="fab fa-whatsapp"></i>
             WhatsApp Us
           </a>
         </div>
       </div>
-      <div class="hero-image" data-aos="fade-left">
-        <img src="assets/Info.png" alt="Electrical Services" class="hero-img">
-      </div>
+      <!-- Hero image removed -->
     </div>
   </section>
 
@@ -185,6 +195,51 @@
             <i class="fas fa-certificate"></i>
             <h3>Government Licensed</h3>
             <p>Certified and authorized electrical contracting services</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Gallery Section -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Our Work Gallery</h2>
+        <p>Check out some of our recent electrical projects and installations</p>
+      </div>
+      
+      <div class="gallery-container">
+        <div class="gallery-slideshow">
+          <div class="slide active">
+            <img src="assets/image01.png" alt="Electrical Installation">
+          </div>
+          <div class="slide">
+            <img src="assets/image02.png" alt="Wiring Work">
+          </div>
+          <div class="slide">
+            <img src="assets/image03.png" alt="Commercial Electrical">
+          </div>
+          <div class="slide">
+            <img src="assets/image04.png" alt="Residential Wiring">
+          </div>
+          <div class="slide">
+            <img src="assets/image05.png" alt="Electrical Maintenance">
+          </div>
+          
+          <button class="slide-nav prev" onclick="moveSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slide-nav next" onclick="moveSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          
+          <div class="slide-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
           </div>
         </div>
       </div>
@@ -394,8 +449,73 @@
     </a>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Image Gallery Slideshow
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    // Auto advance slides every 5 seconds
+    let slideInterval = setInterval(() => {
+      moveSlide(1);
+    }, 5000);
+    
+    // Pause auto-advance when hovering over slideshow
+    const slideshow = document.querySelector('.gallery-slideshow');
+    if (slideshow) {
+      slideshow.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+      });
+      
+      slideshow.addEventListener('mouseleave', () => {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(() => {
+          moveSlide(1);
+        }, 5000);
+      });
+    }
+    
+    function moveSlide(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      const slides = document.getElementsByClassName('slide');
+      const dots = document.getElementsByClassName('dot');
+      
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      
+      // Hide all slides and remove active class from dots
+      for (i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      
+      for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+      }
+      
+      // Show current slide and activate corresponding dot
+      if (slides[slideIndex-1]) {
+        slides[slideIndex-1].classList.add('active');
+      }
+      
+      if (dots[slideIndex-1]) {
+        dots[slideIndex-1].classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
