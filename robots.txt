@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-
-# Sitemap
 Sitemap: https://houseelectric.in/sitemap.xml
 
 # Crawl-delay for polite crawling
